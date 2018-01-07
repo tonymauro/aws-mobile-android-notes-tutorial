@@ -11,6 +11,7 @@ package com.amazonaws.mobile.samples.mynotes;
         import com.amazonaws.mobile.config.AWSConfiguration;
         import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration;
         import com.amazonaws.mobileconnectors.pinpoint.PinpointManager;
+        import com.amazonaws.mobile.auth.userpools.CognitoUserPoolsSignInProvider;
 
 public class AWSProvider {
     private static AWSProvider instance = null;
@@ -34,6 +35,7 @@ public class AWSProvider {
 
         IdentityManager identityManager = new IdentityManager(context, awsConfiguration);
         IdentityManager.setDefaultIdentityManager(identityManager);
+        identityManager.addSignInProvider(CognitoUserPoolsSignInProvider.class);
     }
 
     public Context getContext() {
